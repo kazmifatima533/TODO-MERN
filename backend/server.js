@@ -9,6 +9,13 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());  
 app.use(cors()); 
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://https://todo-mern-frontend-psi.vercel.app",
+  credentials: true,
+}));
+
 
 // MongoDB connection
 mongoose
