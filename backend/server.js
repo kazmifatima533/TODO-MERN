@@ -18,6 +18,11 @@ mongoose
 
 
 app.use('/api', routes); 
+// INFO: Default route
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 
 
 app.listen(PORT, () => {
