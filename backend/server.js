@@ -1,36 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();  
-const routes = require("./routes/Todoroute");
+require('dotenv').config();
+const routes = require('./routes/Todoroute');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Middlewares
+// ✅ Use express.json() before routes
 app.use(express.json());
 
-// ✅ Proper CORS config for Vercel frontend
+// ✅ CORS Setup — Allow only your frontend's domain
 app.use(cors({
-  origin: "https://todo-mern-frontend-psi.vercel.app",
+  origin: "http://localhost:3000",
   credentials: true,
 }));
 
-// MongoDB connection
+// ✅ MongoDB connection
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// Routes
+// ✅ Routes
 app.use('/api', routes);
 
-// Default route
+// ✅ Default route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Start server
+// ✅ Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

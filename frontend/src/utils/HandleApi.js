@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://todo-mern-backend-eta.vercel.app//api";
+const baseUrl = "http://localhost:8080/api";
 
 const getAllToDo = (setToDo) => {
   axios
