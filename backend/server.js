@@ -12,7 +12,7 @@ app.use(express.json());
 
 // ✅ CORS Setup — Allow only your frontend's domain
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 }));
 
